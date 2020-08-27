@@ -33,13 +33,14 @@ export default {
   },
   methods: {
     clear() {
+      
       this.msg = ''
     }
   },
   created () {
     fetch('http://www.geonames.org/postalCodeLookupJSON?postalcode=10504&country=US')
     .then(response =>{
-      return response.json()
+      return response.json() //QA jsonの取り方
     })
     .then(json => {
       this.msg = json.postalcodes[0].adminName1
