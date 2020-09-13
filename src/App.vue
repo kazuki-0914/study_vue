@@ -1,55 +1,22 @@
 <template>
+  <div id="app">
+    {{ msg}}
 
-  <div>
-  <myheader></myheader>
-    <p v-if="msg.length > 0">
-      {{msg}}
-    </p>
-    <p v-else>
-      no text
-    </p>
-<hr>
-<hr>
-    <p>
-      {{msg}}
-    </p>
-    <input type="text" v-model="msg">
-    <button @click="clear()">clear</button>
   </div>
-  
 </template>
 
 <script>
-import myheader from './components/myheader'
 
-export default {
-  components: {
-    myheader
-  },
-  data () {
-    return {
-      msg: 'Hello World!'
-    }
-  },
-  methods: {
-    clear() {
-      
-      this.msg = ''
-    }
-  },
-  created () {
-    fetch('http://www.geonames.org/postalCodeLookupJSON?postalcode=10504&country=US')
-    .then(response =>{
-      return response.json() //QA jsonの取り方
-    })
-    .then(json => {
-      this.msg = json.postalcodes[0].adminName1
-    })
-    .catch((err) => {
-      this.msg = err//エラー処理
-    })
+
+
+var app = new Vue({
+  el: '#app',
+  data:{
+    mesg: 'Test',
+    AAAA: 'aaa'
   }
-}
+})
+
 </script>
 
 <style>
